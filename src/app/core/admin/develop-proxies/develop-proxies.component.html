@@ -1,0 +1,101 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">API Proxies</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-file-code text-dark"> </i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Develop </a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                API Proxies
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-lg-6 col-5 text-right">
+					<a class="btn btn-sm btn-default text-white" (click)="navigatePage('/admin/develop/proxies/create')">
+                        <i class="fas fa-plus"></i>
+						Create
+					</a>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Traffic (24H)</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Modified Date</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            <tr>
+                                <th scope="row">Proxy 1</th>
+                                <td>
+                                    <span class="badge badge-pill badge-warning">Inactive</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    demo1@prototype.com.my
+                                </td>
+                                <td>
+                                    21/03/2020
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Proxy 2</th>
+                                <td>
+                                    <span class="badge badge-pill badge-success">Active</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    demo2@prototype.com.my
+                                </td>
+                                <td>
+                                    23/03/2020
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Proxy 3</th>
+                                <td>
+                                    <span class="badge badge-pill badge-warning">Inactive</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    demo3@prototype.com.my
+                                </td>
+                                <td>
+                                    25/03/2020
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

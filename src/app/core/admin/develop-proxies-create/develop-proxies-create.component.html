@@ -1,0 +1,292 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">Create Proxy</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-file-code text-dark"> </i>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="text-dark"> Develop </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="text-dark"> Proxies </a>
+              </li>
+              <li aria-current="page" class="breadcrumb-item active">
+                Create
+              </li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button
+            class="btn btn-default btn-sm"
+            *ngIf="isCreate"
+            (click)="createProxy('cancel')"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row" *ngIf="!isCreate">
+    <div class="col-md-6">
+      <div
+        class="card bg-default"
+        (click)="createProxy('reverse')"
+        style="cursor: pointer;"
+      >
+        <div class="card-body row">
+          <div class="col-md-2">
+            <i class="fas fa-server fa-4x text-light"></i>
+          </div>
+          <div class="col-md-10">
+            <h4 class="m-0 text-white">Reverse proxy (most common)</h4>
+            <p class="m-0 text-light">
+              Route inbound traffic to a backend service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div
+        class="card bg-default"
+        (click)="createProxy('soap')"
+        style="cursor: pointer;"
+      >
+        <div class="card-body row">
+          <div class="col-md-2">
+            <i class="fas fa-server fa-4x text-light"></i>
+          </div>
+          <div class="col-md-10">
+            <h4 class="m-0 text-white">SOAP service</h4>
+            <p class="m-0 text-light">
+              Create a RESTful or pass-through proxy for a SOAP service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div
+        class="card bg-default"
+        (click)="createProxy('no-target')"
+        style="cursor: pointer;"
+      >
+        <div class="card-body row">
+          <div class="col-md-2">
+            <i class="fas fa-code fa-4x text-light"></i>
+          </div>
+          <div class="col-md-10">
+            <h4 class="m-0 text-white">No target</h4>
+            <p class="m-0 text-light">
+              Create a simple API proxy that does not route to any backend
+              target.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div
+        class="card bg-default"
+        (click)="createProxy('hosted')"
+        style="cursor: pointer;"
+      >
+        <div class="card-body row">
+          <div class="col-md-2">
+            <i class="fas fa-cloud fa-4x text-light"></i>
+          </div>
+          <div class="col-md-10">
+            <h4 class="m-0 text-white">Hosted target</h4>
+            <p class="m-0 text-light">
+              Create a new app in Node.js and optionally add policies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div
+        class="card bg-default"
+        (click)="createProxy('bundle')"
+        style="cursor: pointer;"
+      >
+        <div class="card-body row">
+          <div class="col-md-2">
+            <i class="fas fa-cloud-upload-alt fa-4x text-light"></i>
+          </div>
+          <div class="col-md-10">
+            <h4 class="m-0 text-white">Upload proxy bundle</h4>
+            <p class="m-0 text-light">
+              Import an existing proxy from a zip archieve.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="isCreate">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <ng-template matStepLabel>Proxy details</ng-template>
+              <div class="form-group">
+                <label class="form-control-label">Name</label>
+                <input class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">Base path</label>
+                <input class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">Description</label>
+                <textarea
+                  class="form-control"
+                  placeholder="(Optional)"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">Target (existing API)</label>
+                <input class="form-control" placeholder="https://" />
+              </div>
+              <div>
+                <button class="btn btn-sm btn-default" matStepperNext>
+                  Next
+                </button>
+              </div>
+            </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+              <ng-template matStepLabel>Policies</ng-template>
+              <div class="form-group">
+                <label class="form-control-label"
+                  >Security: Authorization</label
+                >
+                <div class="custom-control custom-radio mb-3">
+                  <input
+                    type="radio"
+                    id="customRadio1"
+                    name="customRadio"
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="customRadio1"
+                    >API Key</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio2"
+                    name="customRadio"
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="customRadio2"
+                    >OAuth 2.0</label
+                  >
+                </div>
+                <div class="custom-control custom-radio mb-3">
+                  <input
+                    type="radio"
+                    id="customRadio3"
+                    name="customRadio"
+                    class="custom-control-input"
+                  />
+                  <label class="custom-control-label" for="customRadio3"
+                    >Pass through (no authorization)</label
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label">Security: Browser</label>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck1"
+                  />
+                  <label class="custom-control-label" for="customCheck1"
+                    >Add course header</label
+                  >
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-warning" matStepperPrevious>
+                  Back
+                </button>
+                <button class="btn btn-sm btn-default" matStepperNext>
+                  Next
+                </button>
+              </div>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+              <ng-template matStepLabel>Virtual hosts</ng-template>
+              <div class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customCheck1"
+                />
+                <label class="custom-control-label" for="customCheck1"
+                  >Secure</label
+                >
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customCheck2"
+                />
+                <label class="custom-control-label" for="customCheck2"
+                  >Default</label
+                >
+              </div>
+              <div>
+                <button class="btn btn-sm btn-warning" matStepperPrevious>
+                  Back
+                </button>
+                <button class="btn btn-sm btn-default" matStepperNext>
+                  Next
+                </button>
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Summary</ng-template>
+              <p>You are now done.</p>
+              <div>
+                <button class="btn btn-sm btn-warning" matStepperPrevious>
+                  Back
+                </button>
+                <button class="btn btn-sm btn-success" (click)="confirm()">
+                  Add
+                </button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

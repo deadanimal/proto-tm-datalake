@@ -1,0 +1,250 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Apps</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-file-code text-dark"> </i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Publish </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Apps </a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                New App
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-lg-6 col-5 text-right">
+                    <a class="btn btn-sm btn-default text-white" (click)="create()">
+                        Create
+                    </a>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">App Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Name</label>
+                                <input class="form-control" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Display Name</label>
+                                <input class="form-control" placeholder="Enter display name">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Callback URL</label>
+                                <input class="form-control" placeholder="Enter callback url (optional)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Notes</label>
+                                <textarea class="form-control" placeholder="Enter notes (optional)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Credentials</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Expiry</label>
+                                        <select class="form-control custom-select" [(ngModel)]="expiry">
+                                            <option selected value="never">Never</option>
+                                            <option value="duration">Duration</option>
+                                            <option value="date">Date</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" *ngIf="expiry == 'duration'">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Value</label>
+                                        <input class="form-control" type="number" placeholder="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="expiry == 'duration'">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Unit</label>
+                                        <select class="form-control custom-select">
+                                            <option selected>Minutes</option>
+                                            <option>Hours</option>
+                                            <option>Days</option>
+                                            <option>Weeks</option>
+                                            <option>Months</option>
+                                            <option>Years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" *ngIf="expiry == 'date'">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Date</label>
+                                        <input class="form-control" type="date" placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h4>Product</h4>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addProduct)">Add product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Custom Attributes</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>Key-value pairs used to store and retrieve values at runtime to control API proxy execution and customize analytics reports.</p>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addAttribute)">Add custom attribute</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addProduct>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Product
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Name</label>
+                <input 
+                  class="form-control"
+                  placeholder="Enter product name"
+                  type="text"
+                >
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #addAttribute>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Custom Attribute
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Name</label>
+                <input 
+                  class="form-control"
+                  placeholder="Enter product name"
+                  type="text"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label">Value</label>
+                <textarea class="form-control" placeholder="Enter value"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>

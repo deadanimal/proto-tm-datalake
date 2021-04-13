@@ -1,0 +1,291 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Custom Report</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-chart-area text-dark"> </i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Analyze </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Custom Report </a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                New cusotm report
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-lg-6 col-5 text-right">
+                    <a class="btn btn-sm btn-default text-white" (click)="save()">
+                        Save
+                    </a>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Basics</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Report Name</label>
+                                <input class="form-control" placeholder="Enter report name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Report Description</label>
+                                <textarea class="form-control" placeholder="Enter report description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Metrics</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>No metrics added. </p>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addMetric)">Add metric</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Dimensions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>No dimensions added. </p>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addDimension)">Add dimensions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Filter</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-control-label">Value</label>
+                        <textarea class="form-control" placeholder="Enter value"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Roles</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>No roles added. </p>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addRole)">Add roles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addMetric>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Metric
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Dimension</label>
+                <select class="form-control custom-select">
+                    <option selected hidden>Please select</option>
+                    <option>Average transaction per second</option>
+                    <option>Cache hits</option>
+                    <option>L1 cache elements count</option>
+                    <option>Policy errors</option>
+                    <option>Proxy errors</option>
+                    <option>Response size</option>
+                    <option>Target errors</option>
+                    <option>Target response time</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #addDimension>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Dimension
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Dimension</label>
+                <input 
+                  class="form-control"
+                  placeholder="Enter dimension"
+                  type="text"
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label">Value</label>
+                <textarea class="form-control" placeholder="Enter value"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #addRole>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Role
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Role</label>
+                <input 
+                  class="form-control"
+                  placeholder="Enter role"
+                  type="text"
+                >
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>

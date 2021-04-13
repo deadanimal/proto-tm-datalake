@@ -1,0 +1,73 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Apps</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-file-code text-dark"> </i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Publish </a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                Apps
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-lg-6 col-5 text-right">
+                    <button class="btn btn-default btn-sm" type="button" (click)="navigatePage('/admin/publish/apps/add')">
+                        <i class="fas fa-plus"></i>
+                        App
+                    </button>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Developer</th>
+                                <th scope="col">App Status</th>
+                                <th scope="col">Modified Data</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            <tr>
+                                <th scope="row">Example App</th>
+                                <td>Amin Redzuan</td>
+                                <td><span class="badge badge-pill badge-success">Approved</span></td>
+                                <td>01/01/2020</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Testing App</th>
+                                <td>Husaini Nazri</td>
+                                <td><span class="badge badge-pill badge-success">Approved</span></td>
+                                <td>10/01/2020</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Debugging App</th>
+                                <td>Husaini Nazri</td>
+                                <td><span class="badge badge-pill badge-success">Approved</span></td>
+                                <td>01/03/2020</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

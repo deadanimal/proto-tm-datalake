@@ -1,0 +1,221 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">API Products</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-file-code text-dark"> </i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Publish </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> API Products </a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                New Product
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-lg-6 col-5 text-right">
+                    <a class="btn btn-sm btn-default text-white" (click)="confirm()">
+                        Save
+                    </a>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">Product Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Name</label>
+                                <input class="form-control" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Display Name</label>
+                                <input class="form-control" placeholder="Enter display name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Description</label>
+                                <input class="form-control" placeholder="Enter description (optional)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Environment</label>
+                                <input class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Version</label>
+                                <textarea class="form-control" placeholder="Enter version"></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Access</label>
+                                <select class="form-control custom-select">
+                                    <option selected hidden>Please select</option>
+                                    <option>Private</option>
+                                    <option>Public</option>
+                                    <option>Internal only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Quota</label>
+                                <input class="form-control" placeholder="Enter quota (optional)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Allowed OAuth Scope</label>
+                                <textarea class="form-control" placeholder="Enter allowed OAuth scope (optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Price (RM)</label>
+                                <textarea class="form-control" placeholder="Enter Price (RM)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="m-0">API Resources</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h4>API proxies</h4>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addProxy)">Add a proxy</button>
+                            <h4>Paths</h4>
+                            <button class="btn btn-sm btn-default" (click)="openModal(addPath)">Add a path</button>
+                        </div>
+                        <div class="col">
+                            <p>
+                                <i class="fas fa-exclamation-triangle text-warning"></i>
+                                This API Product will allow access to all request paths.
+                                Add a proxy or path to limit access. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addProxy>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add API resource
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">API Proxy</label>
+                <input 
+                  class="form-control"
+                  placeholder="Enter API proxy"
+                  type="text"
+                >
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #addPath>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Path
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Path</label>
+                <input 
+                  class="form-control"
+                  placeholder="Enter path"
+                  type="text"
+                >
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>

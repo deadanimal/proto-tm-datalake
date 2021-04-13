@@ -1,0 +1,142 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Developers</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-file-code text-dark"> </i> </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="text-dark"> Publish </a>
+                            </li>
+                            <li aria-current="page" class="breadcrumb-item active">
+                                Developers
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-lg-6 col-5 text-right">
+                    <a class="btn btn-sm btn-default text-white" (click)="openModal(addDeveloper)">
+                        <i class="fas fa-plus"></i>
+                        Add Developer
+                    </a>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Apps</th>
+                            <th scope="col">Members Since</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        <tr>
+                            <th scope="row">Amin Redzuan</th>
+                            <td>
+                                aminredzuan@pipeline.com.my
+                            </td>
+                            <td>aminredzuan</td>
+                            <td>0</td>
+                            <td>
+                                21/03/2020
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Husaini Nazri</th>
+                            <td>
+                                husaininazri@pipeline.com.my
+                            </td>
+                            <td>husaininazri</td>
+                            <td>1</td>
+                            <td>
+                                22/03/2020
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addDeveloper>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Add Developer
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label class="form-control-label">Name</label>
+                <input 
+                  class="form-control"
+                  placeholder="Name"
+                  type="text"
+                >
+            </div>
+            <div class="form-group">
+                <label class="form-control-label">Username</label>
+                <input 
+                  class="form-control"
+                  placeholder="Username"
+                  type="text"
+                >
+            </div>
+            <div class="form-group">
+                <label class="form-control-label">Email</label>
+                <input 
+                  class="form-control"
+                  placeholder="Email"
+                  type="text"
+                >
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer mt--3">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+        >
+            Add
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>
